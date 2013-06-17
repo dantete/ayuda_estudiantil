@@ -1,0 +1,44 @@
+dantete-HP-425 ayuda_estudiantil_1 # rake routes
+   identity_resources GET    /identities/:identity_id/resources(.:format)          resources#index
+                       POST   /identities/:identity_id/resources(.:format)          resources#create
+ new_identity_resource GET    /identities/:identity_id/resources/new(.:format)      resources#new
+edit_identity_resource GET    /identities/:identity_id/resources/:id/edit(.:format) resources#edit
+     identity_resource GET    /identities/:identity_id/resources/:id(.:format)      resources#show
+                       PUT    /identities/:identity_id/resources/:id(.:format)      resources#update
+                       DELETE /identities/:identity_id/resources/:id(.:format)      resources#destroy
+            identities GET    /identities(.:format)                                 identities#index
+                       POST   /identities(.:format)                                 identities#create
+          new_identity GET    /identities/new(.:format)                             identities#new
+         edit_identity GET    /identities/:id/edit(.:format)                        identities#edit
+              identity GET    /identities/:id(.:format)                             identities#show
+                       PUT    /identities/:id(.:format)                             identities#update
+                       DELETE /identities/:id(.:format)                             identities#destroy
+              sessions GET    /sessions(.:format)                                   sessions#index
+                       POST   /sessions(.:format)                                   sessions#create
+           new_session GET    /sessions/new(.:format)                               sessions#new
+          edit_session GET    /sessions/:id/edit(.:format)                          sessions#edit
+               session GET    /sessions/:id(.:format)                               sessions#show
+                       PUT    /sessions/:id(.:format)                               sessions#update
+                       DELETE /sessions/:id(.:format)                               sessions#destroy
+                  root        /                                                     home#index
+                              /auth/:provider/callback(.:format)                    sessions#create
+               signout        /signout(.:format)                                    sessions#destroy
+          auth_failure        /auth/failure(.:format)                               sessions#failure
+
+
+________________________________________________________________________________
+para agregar una columna a auna tabla
+-rails generate migration add_email_to_users email:string  (fijasrse en nombres de las tablas)
+se puede editar la migración que se crea (para agregar valores por defecto o propiedaes)
+-rake db:migrate
+___________________________________________________-
+para generar una migracion: 
+-rails generate migration nombre_migracion
+escribirle a la migracion lo que uno quiera
+______________________________________________________
+rake db:migrate:redo #retroceder la ultima migrate
+____________________________________________________-
+1 rails generate controller article
+2 # Oops!
+3 rails destroy controller article
+________________________________________________________

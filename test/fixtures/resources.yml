@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  identity: 
+  type: 
+  description: MyText
+  tiene_codigo: false
+  visible: false
+
+two:
+  identity: 
+  type: 
+  description: MyText
+  tiene_codigo: false
+  visible: false

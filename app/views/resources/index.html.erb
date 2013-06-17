@@ -1,0 +1,25 @@
+<h1>Recursos de usuario: <%= @identity.name %></h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Tipo</th>
+    <th>Description</th>
+    <th>Contiene código</th>
+    <th></th>
+    <th></th>
+    
+  </tr>
+
+<% @resources.each do |resource| %>
+  <tr>
+    <td><%= resource.id %></td>
+    <td><%= resource.resource_type %></td>
+    <td><%= resource.description %></td>
+    <td><%= resource.tiene_codigo %></td>
+    <td><%= link_to 'Editar' %></td>
+    <td><%= link_to 'Eliminar' %></td>
+    
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,26 @@
+<h1>Lista de usuarios</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Administrador</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    
+  </tr>
+
+<% @identities.each do |identity| %>
+  <tr>
+    <td><%= identity.id %></td>
+    <td><%= identity.name %></td>
+    <td><%= identity.email %></td>
+    <td><%= identity.administrator %></td>
+    <td><%= link_to 'Editar usuario', edit_identity_path(identity, :method => :put) %></td>
+    <td><%= link_to 'Eliminar usuario', identity, :confirm => '¿Estas seguro?', :method => :delete %></td>
+    <td><%= link_to 'Recursos', identity_resources_path(identity) %></td>
+  </tr>
+<% end %>
+</table>
