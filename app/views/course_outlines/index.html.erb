@@ -1,25 +1,53 @@
-<h1>Listing course_outlines</h1>
+<html>
+    <h1>Lista Mallas Curriculares</h1>
+      <head>
+        <script type="text/javascript" language="javascript" src="jquery.js"></script> 
+        <script type="text/javascript" language="javascript" src="jquery.dataTables.js"></script> 
+        <style type="text/css" title="currentStyle"> 
+          @import "demo_page.css";
+          @import "demo_table.css";
+        </style> 
+        
+        <script type="text/javascript" charset="utf-8"> 
+          $(document).ready(function() {
+            $('#example').dataTable();
+          } );
+        </script> 
+        
+      </head>
+      <body>
+        <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha creación</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>           
+          </thead>
+          <tbody>
+             <% @course_outlines.each do |course_outline| %>
+              <tr>
+                <td><%= course_outline.name %></td>
+                <td><%= course_outline.start_date %></td>
+                <td><%= link_to 'Show', course_outline %></td>
+                <td><%= link_to 'Edit', edit_course_outline_path(course_outline) %></td>
+                <td><%= link_to 'Destroy', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br />
+        <%= link_to 'New Course outline', new_course_outline_path %>
+      </body>
+</html>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Start date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @course_outlines.each do |course_outline| %>
-  <tr>
-    <td><%= course_outline.name %></td>
-    <td><%= course_outline.start_date %></td>
-    <td><%= link_to 'Show', course_outline %></td>
-    <td><%= link_to 'Edit', edit_course_outline_path(course_outline) %></td>
-    <td><%= link_to 'Destroy', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Course outline', new_course_outline_path %>
+
+
+
+
+
