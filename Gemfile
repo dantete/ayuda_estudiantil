@@ -24,6 +24,8 @@ gem 'jquery-rails'
 gem 'omniauth-identity'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bootstrap-sass'
+gem "rake", "~> 10.1.0"
+#gem "paperclip", "~> 3.4.2"
 
 
 # To use ActiveModel has_secure_password

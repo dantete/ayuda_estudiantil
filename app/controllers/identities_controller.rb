@@ -14,7 +14,7 @@ class IdentitiesController < ApplicationController
     @identity = Identity.find(params[:id])
   end
 
-  # PUT /identities/1
+  # PUT /identities/:id
   def update
     @identity = Identity.find(params[:id])
 

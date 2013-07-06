@@ -25,7 +25,12 @@ edit_identity_resource GET    /identities/:identity_id/resources/:id/edit(.:form
                signout        /signout(.:format)                                    sessions#destroy
           auth_failure        /auth/failure(.:format)                               sessions#failure
 
-
+____________________________________________________________________________
+DIFRENCIA entre CREATE Y NEW: 
+CREATE: hay que pasasrle los datos de la entidad a crear. En controller: @post = Post.new(params[:post]). 
+  -Por esta razón es request tipo POST (los datos no pueden de la entidad no deben ir en la URL)
+NEW: Es para ingresar los datos de la nueva entidad. En controller: @post = Post.new 
+  - EL tipo de request es GET.
 ________________________________________________________________________________
 para agregar una columna a auna tabla
 -rails generate migration add_email_to_users email:string  (fijasrse en nombres de las tablas)
@@ -42,3 +47,17 @@ ____________________________________________________-
 2 # Oops!
 3 rails destroy controller article
 ________________________________________________________
+
+
+
+
+GIT: 
+SUBIR : 
+git add . //agregar archivo nuevos creados
+git commit -m "6Julio"
+git commit -a //aceptar lso cambios 
+git push origin master
+
+
+git pull origin master //bajar actualizaciones y que las mezcle 
+git clone git@github.com:dantete/ayuda_estudiantil.git //dowlnload proy completo (hacer fuera de l acarpeta del proye)

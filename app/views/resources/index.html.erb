@@ -17,8 +17,8 @@
     <td><%= resource.resource_type %></td>
     <td><%= resource.description %></td>
     <td><%= resource.tiene_codigo %></td>
-    <td><%= link_to 'Editar' %></td>
-    <td><%= link_to 'Eliminar' %></td>
+    <td><%= link_to 'Editar', edit_identity_resource_path(@identity, resource) %></td>
+    <td><%= link_to 'Eliminar', [@identity, resource], confirm: '¿Estas seguro?', method: :delete %></td>
     
   </tr>
 <% end %>
