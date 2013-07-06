@@ -56,7 +56,7 @@ SUBIR :
 git add . //agregar archivo nuevos creados
 git commit -m "6Julio"
 git commit -a //aceptar lso cambios 
-git push origin master
+git push origin master //ver si pesa mucho hacer: rake tmp:clear,rake log:clear 
 
 
 git pull origin master //bajar actualizaciones y que las mezcle 
