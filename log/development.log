@@ -1,0 +1,58 @@
+Connecting to database specified by database.yml
+  [1m[36m (367.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (88.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateIdentities (20130507054306)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (382.6ms)[0m  [1mCREATE TABLE "identities" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "password_digest" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (19.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130507054306')
+  [1m[36m (14.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20130507055212)
+  [1m[35m (1.1ms)[0m  BEGIN
+  [1m[36m (148.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "provider" character varying(255), "uid" character varying(255), "name" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (16.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130507055212')
+  [1m[36m (12.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddAdministratorToIdentities (20130524202804)
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (180.6ms)[0m  [1mALTER TABLE "identities" ADD COLUMN "administrator" boolean DEFAULT 'f'[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130524202804')
+  [1m[36m (26.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateResources (20130615070516)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (91.4ms)[0m  [1mCREATE TABLE "resources" ("id" serial primary key, "identity_id" integer, "type" character varying(255), "description" text, "tiene_codigo" boolean DEFAULT 'f', "visible" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (59.8ms)[0m  CREATE INDEX "index_resources_on_identity_id" ON "resources" ("identity_id")
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130615070516')[0m
+  [1m[35m (6.4ms)[0m  COMMIT
+Migrating to CambiarColumnaTypeResource (20130615081740)
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35m (12.4ms)[0m  ALTER TABLE "resources" ALTER COLUMN "type" TYPE character varying(255)
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "resources" RENAME COLUMN "type" TO "resource_type"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130615081740')
+  [1m[36m (22.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateIdentities (20130507054306)
+Migrating to CreateUsers (20130507055212)
+Migrating to AddAdministratorToIdentities (20130524202804)
+Migrating to CreateResources (20130615070516)
+Migrating to CambiarColumnaTypeResource (20130615081740)
+Migrating to CreateCourseOutlines (20130706190113)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (51.6ms)[0m  [1mCREATE TABLE "course_outlines" ("id" serial primary key, "name" character varying(255), "start_date" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130706190113')
+  [1m[36m (15.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCourses (20130706190126)
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36m (97.2ms)[0m  [1mCREATE TABLE "courses" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130706190126')
+  [1m[36m (14.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateContains (20130706190143)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (77.8ms)[0m  [1mCREATE TABLE "contains" ("id" serial primary key, "semester" integer, "course_id" integer, "course_outline_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130706190143')
+  [1m[36m (11.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 

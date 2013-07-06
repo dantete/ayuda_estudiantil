@@ -1,5 +1,11 @@
 AyudaEstudiantil1::Application.routes.draw do
 	
+  resources :courses
+
+
+  resources :course_outlines
+
+
 	resources :sessions
 	
 	resources :identities do

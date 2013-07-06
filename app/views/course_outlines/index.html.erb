@@ -1,0 +1,25 @@
+<h1>Listing course_outlines</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Start date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @course_outlines.each do |course_outline| %>
+  <tr>
+    <td><%= course_outline.name %></td>
+    <td><%= course_outline.start_date %></td>
+    <td><%= link_to 'Show', course_outline %></td>
+    <td><%= link_to 'Edit', edit_course_outline_path(course_outline) %></td>
+    <td><%= link_to 'Destroy', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Course outline', new_course_outline_path %>
