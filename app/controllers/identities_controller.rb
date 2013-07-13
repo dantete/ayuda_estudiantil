@@ -2,22 +2,36 @@ class IdentitiesController < ApplicationController
 	include IdentitiesHelper
 
   def index
-    	@identities = Identity.all    
+    	@identities = Identity.all
+
   end
 
 	def new
-		@identity = env['omniauth.identity']
+    @identity = env['omniauth.identity']
+
+
+    #para obtener un form_for(@identity)
+    if @identity == nil
+		  @identity = Identity.new 
+    end  
+    @identity.build_avatar
+    
+    #@identity.build_avatar(:identity_id => @identity.id )
+    #@identity.avatar.build( @identity.id )
+
 	end
 
-  # GET /identities/1/edit
+  #GET    /identities/:id/edit
   def edit
     @identity = Identity.find(params[:id])
+
+
   end
 
   # PUT /identities/:id
   def update
     @identity = Identity.find(params[:id])
-
+   
          
     #no deberia retornar null 
     if loggedIsAdministrator() 

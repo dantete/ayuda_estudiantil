@@ -7,6 +7,10 @@ class SessionsController < ApplicationController
 	def create
 		user = User.from_omniauth(env["omniauth.auth"])
 		session[:user_id] = user.id		
+
+		#@identity = Identity.find(user.id)
+		#@identity.build_avatar
+
 		redirect_to root_url, :notice => "Usuario logueado"
 		
 	end

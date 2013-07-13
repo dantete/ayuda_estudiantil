@@ -2,33 +2,44 @@ class ResourcesController < ApplicationController
 	before_filter :load_identity
 
 
+	#GET    /resources/:id
+	def show
+		@resource = Resource.find(params[:id])
+		idUser = session[:user_id]     	
+		@identity =  Identity.find(idUser) 
+
+	end
 
 	# GET /identities/:identity_id/resources
 	def index
-		@identity = Identity.find(params[:identity_id])
+		
 		@resources = @identity.resources
 	end
 
 	#GET /identities/:identity_id/resources/new(.:format)	
 	def new
-
-		@identity = Identity.find(params[:identity_id])
+		
 		@resource = @identity.resources.new
 
 	end
 
 	# POST /identities/:identity_id/resources(.:format)
 	def create
-		@identity = Identity.find(params[:identity_id])
-		@resource = @identity.resources.create(params[:resource])    
-		redirect_to identity_resources_path(@identity) , notice: 'Recurso creado correctamente'
+		
+		@resource = @identity.resources.create(params[:resource])
+		
+		if @resource.save
+	        redirect_to identity_resources_path(@identity) , notice: 'Recurso creado correctamente'
+      	else
+	        render action: "new" , notice: 'El recurso no fue creado'
+      	end		
 	end
 
 
 	#DELETE /identities/:identity_id/resources/:id
 	def destroy
 	 	@resource = Resource.find(params[:id])
-	 	@resource = @identity.resources.find(params[:id])
+	 	#@resource = @identity.resources.find(params[:id])
 	 	@resource.destroy
 	 	redirect_to identity_resources_path(@identity) , notice: 'Recurso eliminado' 
 	end
@@ -61,5 +72,7 @@ end
 private 
 
 	def load_identity
-		@identity = Identity.find(params[:identity_id])
+		if params[:identity_id] != nil #Para el show (/resource/:id )
+			@identity = Identity.find(params[:identity_id])
+		end
 	end	

@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615081740) do
+ActiveRecord::Schema.define(:version => 20130713141405) do
+
+  create_table "avatars", :force => true do |t|
+    t.integer  "identity_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "text"
+    t.integer  "resource_id"
+    t.integer  "identity_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "identities", :force => true do |t|
     t.string   "name"
@@ -26,10 +44,16 @@ ActiveRecord::Schema.define(:version => 20130615081740) do
     t.integer  "identity_id"
     t.string   "resource_type"
     t.text     "description"
-    t.boolean  "tiene_codigo",  :default => false
-    t.boolean  "visible",       :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.boolean  "tiene_codigo",      :default => false
+    t.boolean  "visible",           :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "title"
+    t.string   "grade"
+    t.string   "professor"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
   end
 
   add_index "resources", ["identity_id"], :name => "index_resources_on_identity_id"

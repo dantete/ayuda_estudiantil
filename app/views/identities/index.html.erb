@@ -18,7 +18,8 @@
     <td><%= identity.name %></td>
     <td><%= identity.email %></td>
     <td><%= identity.administrator %></td>
-    <td><%= link_to 'Editar usuario', edit_identity_path(identity, :method => :put) %></td>
+    <!-- <td><%= link_to 'Editar usuario', edit_identity_path(identity, :method => :put) %></td> -->
+    <td><%= link_to 'Editar usuario', edit_identity_path(identity) %></td>
     <td><%= link_to 'Eliminar usuario', identity, :confirm => '¿Estas seguro?', :method => :delete %></td>
     <td><%= link_to 'Recursos', identity_resources_path(identity) %></td>
   </tr>

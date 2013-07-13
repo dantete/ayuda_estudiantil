@@ -1,10 +1,13 @@
 dantete-HP-425 ayuda_estudiantil_1 # rake routes
-   identity_resources GET    /identities/:identity_id/resources(.:format)          resources#index
+           new_session GET    /sessions/new(.:format)                               sessions#new
+     resource_comments POST   /resources/:resource_id/comments(.:format)            comments#create
+      resource_comment DELETE /resources/:resource_id/comments/:id(.:format)        comments#destroy
+              resource GET    /resources/:id(.:format)                              resources#show
+    identity_resources GET    /identities/:identity_id/resources(.:format)          resources#index
                        POST   /identities/:identity_id/resources(.:format)          resources#create
  new_identity_resource GET    /identities/:identity_id/resources/new(.:format)      resources#new
 edit_identity_resource GET    /identities/:identity_id/resources/:id/edit(.:format) resources#edit
-     identity_resource GET    /identities/:identity_id/resources/:id(.:format)      resources#show
-                       PUT    /identities/:identity_id/resources/:id(.:format)      resources#update
+     identity_resource PUT    /identities/:identity_id/resources/:id(.:format)      resources#update
                        DELETE /identities/:identity_id/resources/:id(.:format)      resources#destroy
             identities GET    /identities(.:format)                                 identities#index
                        POST   /identities(.:format)                                 identities#create
@@ -13,43 +16,45 @@ edit_identity_resource GET    /identities/:identity_id/resources/:id/edit(.:form
               identity GET    /identities/:id(.:format)                             identities#show
                        PUT    /identities/:id(.:format)                             identities#update
                        DELETE /identities/:id(.:format)                             identities#destroy
-              sessions GET    /sessions(.:format)                                   sessions#index
-                       POST   /sessions(.:format)                                   sessions#create
-           new_session GET    /sessions/new(.:format)                               sessions#new
-          edit_session GET    /sessions/:id/edit(.:format)                          sessions#edit
-               session GET    /sessions/:id(.:format)                               sessions#show
-                       PUT    /sessions/:id(.:format)                               sessions#update
-                       DELETE /sessions/:id(.:format)                               sessions#destroy
                   root        /                                                     home#index
                               /auth/:provider/callback(.:format)                    sessions#create
                signout        /signout(.:format)                                    sessions#destroy
           auth_failure        /auth/failure(.:format)                               sessions#failure
 
+
 ____________________________________________________________________________
-DIFRENCIA entre CREATE Y NEW: 
+DIFRENCIA entre CREATE Y NEW: (es lo mismo que con UPDATE y edit)
 CREATE: hay que pasasrle los datos de la entidad a crear. En controller: @post = Post.new(params[:post]). 
   -Por esta razón es request tipo POST (los datos no pueden de la entidad no deben ir en la URL)
 NEW: Es para ingresar los datos de la nueva entidad. En controller: @post = Post.new 
   - EL tipo de request es GET.
 ________________________________________________________________________________
+
+MIGRACIONES
+
 para agregar una columna a auna tabla
 -rails generate migration add_email_to_users email:string  (fijasrse en nombres de las tablas)
 se puede editar la migración que se crea (para agregar valores por defecto o propiedaes)
 -rake db:migrate
-___________________________________________________-
+
 para generar una migracion: 
 -rails generate migration nombre_migracion
 escribirle a la migracion lo que uno quiera
-______________________________________________________
-rake db:migrate:redo #retroceder la ultima migrate
-____________________________________________________-
+-rails generate paperclip User avatar  //paperclip
+
+-rake db:migrate:redo #reahacer la ultima migrate ()
+-rake db:migrate:down VERSION=20130707032528 #deshacer la que uno quiera, pero debe tener el metodo def self.down "cambios a devolver" end
+
 1 rails generate controller article
 2 # Oops!
 3 rails destroy controller article
 ________________________________________________________
+COMMANDS:
 
+-rails generate model Post title:string text:text
+-rake tmp:clear,rake log:clear
 
-
+_________________________________________________________-
 
 GIT: 
 SUBIR : 
@@ -61,3 +66,30 @@ git push origin master //ver si pesa mucho hacer: rake tmp:clear,rake log:clear
 
 git pull origin master //bajar actualizaciones y que las mezcle 
 git clone git@github.com:dantete/ayuda_estudiantil.git //dowlnload proy completo (hacer fuera de l acarpeta del proye)
+__________________________________
+PAPERCLIP
+-migracion:
+rails generate paperclip User avatar  //paperclip
+
+-en model: 
+validates_attachment_content_type :file, :content_type => ["application/zip", "application/x-zip", "application/x-zip-compressed", "application/pdf", "application/x-pdf",'application/pdf','text/plain', 'text/xml', 'image/abc', 'some_image/png', 'image/jpeg', 'image/png', 'image/gif'], :message => ': DEBE SER UNA IMAGEN'
+
+has_attached_file :photo, {
+            :styles => { :large => "700x400#", :medium=>"490x368#", :thumbnail=>"75x75#" },
+            :default_url => "/images/thumbnail/blank-recipe.png"}
+
+______________________________-
+VARIOS:
+-<%= link_to 'Add', :controller => :items, :action => :new, :id => @person.id %>
+-f.hidden_field :person_id #para pasarle al create cuando hago f.submit
+
+-Client.order("orders_count ASC, created_at DESC")
+# OR
+Client.order("orders_count ASC", "created_at DESC")
+
+_____________________________
+COLUMNAS DEL MODEL 
+metodos_x: attributes=(attributes),NEW(atributes) y updates(atributes)
+
+attr_accessible :name, :nickname #pueden ser seteados en metodos_x
+attr_protected :name #no pueden ser seteados en los metodos_x, PARA PROteger principalmente en el envío de formularios

@@ -1,0 +1,41 @@
+
+  <% resource_types = ["proyecto","informe","tarea","prueba enunciado","prueba desarrollo","sólo código"] %>
+
+  <div class="field">
+    <%= r_form.label :title, "Título" %>
+    <%= r_form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= r_form.label :Tipo_Recurso %>
+    <%= r_form.select :resource_type, resource_types %>
+  </div>
+ 
+  <div class="field">
+    <%= r_form.label :descripcion,"Descripción" %>
+    <%= r_form.text_area :description, size: "5x5" %>
+  </div>
+
+  <div class="field">
+    <%= r_form.label :Profesor %>
+    <%= r_form.text_field :professor %>
+  </div>
+
+   
+  <div class="field">
+    <%= r_form.label  :grade, "Nota: (3.5 o dejar en blanco)"%>
+    <%= r_form.text_field :grade %>
+  </div>
+
+  <div class="field">
+      <%= r_form.label :Contiene_Codigo %>
+      <%= r_form.check_box :tiene_codigo %>
+  </div>
+
+  <div class="field">
+    <%= r_form.label "Subir archivo" %>
+    <%= r_form.file_field :file %>    
+  </div>
+  
+
+ 

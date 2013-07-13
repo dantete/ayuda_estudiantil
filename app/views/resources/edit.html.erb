@@ -1,31 +1,29 @@
 <h3>Editar Recurso</h3>
 
 <%= form_for([@identity, @resource]) do |r_form| %>
-	<% if @resource && @resource.errors.any? %>
-		<div class="error_messages">
-			<h2><%= pluralize(@resource.errors.count, "errores") %> El recurso no fue editado:</h2>
-			<ul>
-				<% @resource.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-				<% end %>
-			</ul>
+	<% if @resource.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@resource.errors.count, "error") %> El recurso no fue editado:</h2>
+	      <ul>
+	      <% @resource.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+  	<% end %>
+
+	<%= render 'form' , :r_form => r_form%>
+
+  	<% if loggedIsAdministrator() %>
+		<div class="field">
+			<%= r_form.label :Aprobado %>
+			<%= r_form.check_box :visible %>
 		</div>
 	<% end %>
 
-	<div class="field">
-    <%= r_form.label :Tipo_Recurso %><br />
-    <%= r_form.text_field :resource_type %>
-  </div>
- 
-  <div class="field">
-    <%= r_form.label :Descripcion %><br />
-    <%= r_form.text_area :description %>
-  </div>
-
-	
 	<br>
 	<div class="actions">
-		<%= r_form.submit "Editar"%>
+		<%= r_form.submit "Editar" %>
 		<%= r_form.submit "Cancelar"%>
 	</div>
 <% end %>

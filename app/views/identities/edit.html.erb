@@ -1,6 +1,8 @@
 <h3>Editar usuario</h3>
 
-<%= form_for(@identity) do |identity_form| %>
+
+<% @identity.build_avatar %>
+<%= form_for(@identity)   do |identity_form| %>
 	<% if @identity && @identity.errors.any? %>
 		<div class="error_messages">
 			<h2><%= pluralize(@identity.errors.count, "errores") %> La cuenta no fue editada:</h2>
@@ -20,6 +22,11 @@
 		<%= identity_form.label :email %>
 		<%= identity_form.text_field :email %>
 	</div>
+
+	<h2>Avatar</h2>
+	<%= render :partial => 'avatars/form',
+             :locals => {:form => identity_form} %>
+  
 
 	
 	<% if loggedIsAdministrator() %>

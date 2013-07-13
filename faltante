@@ -1,0 +1,39 @@
+FALTANTE:
+-borrar comentarios: todosl os users pueden
+-perfil de usuario poner foto
+-EL usuario visita puede escribir las rutas por ejemplo: 
+/resources/1
+-Un comentario muy grande se sale de la pagina, hay q buscar algo que lo contenga
+-Si edito los datos de un user, le borra la imagen y luego actualiza los datos
+
+
+DEJAR PARA EL FINAL(orden de hacer primero):
+-Subir imagen AVATAR para cada usuario. no funcinó con Identity (es Omniatuh).
+Habría que hacer un 1 to 1 y hacer @identity.avatar.photo.url
+-COmentar con reply cada comentario
+-en comentarios hacer click al comentador y ver sus datos
+________________________________________________________________
+INTEGRIDAD REFERENCIAL:
+-Se borra una identity:
+	- se borran sus comments.
+	- se nullifican sus recursos creados.
+
+-Se borra un recurso:
+	- se borran sus comments.
+
+
+
+______________________
+RELACIONES recurso, comentario, usuario:
+
+<h3>COmentarios del recurso</h3>
+<hr><%= @resource.comments %>
+<h3>USUARIO QUE HAN COMENTADO EL RECURSO</h3>
+<hr><%= @resource.identities %>
+
+<h3>COmentarios del USUARIO LOGUEADO</h3>
+<hr><%= @identity.comments %>
+<h3>REcursos Que HA CREADO EL USUARIO</h3>
+<hr><%= @identity.resources  %>
+<h3>REcursos Que HA COMENTARO EL USUARIO</h3>
+<hr><%= @identity.resources (No lo tengo hay que cambiar el nombre de la variabel.)  %>	

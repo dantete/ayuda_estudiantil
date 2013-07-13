@@ -6,10 +6,13 @@
     <title><%= content_for?(:title) ? yield(:title) : "Ayuda Estudiantil" %></title>
     <meta name="description" content="">
     <meta name="author" content="">
+
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>    
+    
     <%= yield(:head) %>
+    
   </head>
   <body>
     <header class="navbar navbar-fixed-top">
@@ -27,20 +30,16 @@
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
-          </div>
-          <footer>
-
-           
-            
-          </footer>
+          </div>          
         </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
     <br>
      <pre>
+      
   <% idUser = session[:user_id]  %>
   <% if  idUser == nil %>
-  <%= "Tipo usuario: visita" %> 
+  <%= "Tipo usuario: visita" %>   
   <% else %>      
       <% identity =  Identity.find(idUser) %>          
       <% if  identity.administrator %>
@@ -48,6 +47,7 @@
       <% else %>
           <%= "Tipo usuario: Normal - Nombre: "+ identity.name + " - Email: "+identity.email%>           
       <% end %>
+      <%#= image_tag @identity.avatar.url %>
   <% end %>
 </pre> 
   </body>

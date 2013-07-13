@@ -1,6 +1,6 @@
 <h1>Crear recurso</h1>
-<%# @identity.resources.build %>
-<%= form_for ([@identity, @resource]) do |r_form| %>
+
+<%= form_for ([@identity, @resource]), :html => {:multipart => true} do |r_form| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@resource.errors.count, "error") %> El recurso no fue creado:</h2>
@@ -12,18 +12,11 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= render 'form' , :r_form => r_form%>
 
-  <div class="field">
-    <%= r_form.label :Tipo_Recurso %><br />
-    <%= r_form.text_field :resource_type %>
-  </div>
- 
-  <div class="field">
-    <%= r_form.label :Descripcion %><br />
-    <%= r_form.text_area :description %>
-  </div>
-
+  <br>
   <div class="actions">
-    <%= r_form.submit %>
+    <%= r_form.submit "Crear" %>
   </div>
 <% end %>

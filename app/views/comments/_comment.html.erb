@@ -1,0 +1,31 @@
+<div class="row-fluid">
+    <div class="span1">        
+       <%  avatar_identity = comment.identity.avatar %> 
+        <% if avatar_identity  == nil %>
+            <i class="icon-user icon-5x"></i> 
+        <% else %>
+            <%= image_tag avatar_identity.photo.url(:small) %>       
+        <% end %>
+
+    </div>
+    <div class="span7">
+        <div class="comment-content">
+            <div class="comments-info clearfix">
+                <h4 class="pull-left"><a href="#"><%= comment.identity.name %></a></h4>
+                <span class="comments-num pull-right">
+                    <span class="label label-info"><%= cont %></span>
+                    (<%=link_to 'Eliminar ', [comment.resource,comment], :confirm => '¿Estas seguro?', :method => :delete %>)
+                </span> 
+            </div>
+            <%= comment.text %>
+            <div class="comments-info">               
+                <br>
+                <p><i class="pull-left"><i class="icon-calendar"></i> 
+                    <%= comment.created_at.strftime("%d %b. %Y") %> | <%=comment.created_at.strftime("%H:%M")  %> 
+                </i></p>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+	

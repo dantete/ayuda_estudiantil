@@ -1,11 +1,19 @@
 AyudaEstudiantil1::Application.routes.draw do
 	
-	resources :sessions
-	
-	resources :identities do
-		resources :resources
+	resources :sessions, only: [:new]
+		
+	resources :resources  , only: [:show] do
+		resources :comments , only: [:destroy, :create]
 	end
-	
+
+	#resources :resources , only: [:show]
+	resources :identities do
+		resources :resources , only: [:index, :new, :create, :edit, :update, :destroy]
+	end
+	# resources :posts do
+	# 	resources :comments, only: [:index, :new, :create]
+	# end
+	# resources :comments, only: [:show, :edit, :update, :destroy]
 
 	root :to => 'home#index'
 	#match "/resources" => 'home#main_resources' , :as => 'main_resources'
