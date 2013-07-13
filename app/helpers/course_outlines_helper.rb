@@ -1,0 +1,2 @@
+module CourseOutlinesHelper
+end

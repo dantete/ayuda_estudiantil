@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Semestres</li>
+              <li><a href="<%=@co.id%>/semestre/1">1 Semestre</a></li>
+              <li><a href="<%=@co.id%>/semestre/2">2 Semestre</a></li>
+              <li><a href="<%=@co.id%>/semestre/3">3 Semestre</a></li>
+              <li><a href="<%=@co.id%>/semestre/4">4 Semestre</a></li>
+              <li><a href="<%=@co.id%>/semestre/5">5 Semestre</a></li>
+        </ul>
+      </div><!--/.well -->
+    </div><!--/span-->
+    <div class="span9">
+      <div class="hero-unit">
+        <%= image_tag("utalca.jpg", :alt => "Smiley face") %></p>
+      </div>
+      <div class="row-fluid">
+      	<%@courses.map { |course|  %>
+          <div class="span4">
+            <h4><%=  course.name %></h4>
+              <p align="justify"><%= course.description %></p>
+              <p><a class="btn" href="solucion_algoritmica/solucionAlgoritmica">View details &raquo;</a></p>
+          </div><!--/span-->
+        <%}%>     
+      </div><!--/row-->
+    </div><!--/span-->
+  </div><!--/row-->
+  <hr>
+</div>      
