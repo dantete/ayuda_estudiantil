@@ -1,5 +1,9 @@
 AyudaEstudiantil1::Application.routes.draw do
 	
+  #get "plan/malla"
+  get 'plan/malla/:course_outline_id', to: 'plan#malla'
+  get 'plan/malla/:course_outline_id/semestre/:semester', to: 'plan#malla'
+
   resources :courses
 
 

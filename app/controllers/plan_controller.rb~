@@ -1,0 +1,4 @@
+class PlanController < ApplicationController
+  def malla
+  end
+end
