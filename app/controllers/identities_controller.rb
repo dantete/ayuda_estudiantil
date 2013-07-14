@@ -16,8 +16,7 @@ class IdentitiesController < ApplicationController
     end  
     @identity.build_avatar
     
-    #@identity.build_avatar(:identity_id => @identity.id )
-    #@identity.avatar.build( @identity.id )
+   
 
 	end
 
@@ -31,7 +30,7 @@ class IdentitiesController < ApplicationController
   # PUT /identities/:id
   def update
     @identity = Identity.find(params[:id])
-   
+    
          
     #no deberia retornar null 
     if loggedIsAdministrator() 
@@ -48,7 +47,8 @@ class IdentitiesController < ApplicationController
         render action: "edit"        
       end            
     else #boton cancelar
-      redirect_to back_link               
+
+      redirect_to back_link , notice: 'Usuario No editado'               
     end     
       
     

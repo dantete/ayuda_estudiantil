@@ -93,3 +93,12 @@ metodos_x: attributes=(attributes),NEW(atributes) y updates(atributes)
 
 attr_accessible :name, :nickname #pueden ser seteados en metodos_x
 attr_protected :name #no pueden ser seteados en los metodos_x, PARA PROteger principalmente en el envío de formularios
+
+___________________________________-
+ESTRUCTURAS 
+
+<% if avatar_identity  == nil %>
+    <i class="icon-user icon-5x"></i> 
+<% else %>
+    <%= image_tag avatar_identity.photo.url(:small) %>       
+<% end %>

@@ -6,15 +6,23 @@
         <% else %>
             <%= image_tag avatar_identity.photo.url(:small) %>       
         <% end %>
-
     </div>
+
+    <% if identity.administrator or identity.id == comment.identity.id %>
+        <% canDelete = true  %> 
+    <% else %>
+        <% canDelete = false  %>        
+    <% end %>
+
     <div class="span7">
         <div class="comment-content">
             <div class="comments-info clearfix">
                 <h4 class="pull-left"><a href="#"><%= comment.identity.name %></a></h4>
                 <span class="comments-num pull-right">
                     <span class="label label-info"><%= cont %></span>
-                    (<%=link_to 'Eliminar ', [comment.resource,comment], :confirm => '¿Estas seguro?', :method => :delete %>)
+                    <% if canDelete %>
+                        (<%=link_to 'Eliminar ', [comment.resource,comment], :confirm => '¿Estas seguro?', :method => :delete %>)
+                    <% end %>
                 </span> 
             </div>
             <%= comment.text %>
