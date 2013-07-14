@@ -15,8 +15,9 @@ AyudaEstudiantil1::Application.routes.draw do
 
 
   #get "plan/malla"
-  get 'plan/malla/:course_outline_id', to: 'plan#malla'
-  get 'plan/malla/:course_outline_id/semestre/:semester', to: 'plan#malla'
+	match 'plan/malla/:course_outline_id/semestre/:semester', to: 'plan#malla', :as => :malla_semestre
+	match 'plan/malla/:course_outline_id', to: 'plan#malla', :as => :malla
+	match 'plan/malla/:course_outline_id/semestre/:semester/curso/:course_id', to: 'plan#curso', :as => :malla_semestre_curso
 
   resources :courses
 

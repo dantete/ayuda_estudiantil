@@ -4,11 +4,13 @@
       <div class="well sidebar-nav">
         <ul class="nav nav-list">
           <li class="nav-header">Semestres</li>
-              <li><a href="<%=@co.id%>/semestre/1">1 Semestre</a></li>
-              <li><a href="<%=@co.id%>/semestre/2">2 Semestre</a></li>
-              <li><a href="<%=@co.id%>/semestre/3">3 Semestre</a></li>
-              <li><a href="<%=@co.id%>/semestre/4">4 Semestre</a></li>
-              <li><a href="<%=@co.id%>/semestre/5">5 Semestre</a></li>
+            <% for i in 1..12 %>
+              <% if i.to_s() == @s %>
+                <li class="active"><%= link_to 'Semestre '+i.to_s(), malla_semestre_path(@co.id, i) %></li>
+              <% else %>
+                <li><%= link_to 'Semestre '+i.to_s(), malla_semestre_path(@co.id, i) %></li>
+              <% end %>
+            <% end %>
         </ul>
       </div><!--/.well -->
     </div><!--/span-->
@@ -21,7 +23,7 @@
           <div class="span4">
             <h4><%=  course.name %></h4>
               <p align="justify"><%= course.description %></p>
-              <p><a class="btn" href="solucion_algoritmica/solucionAlgoritmica">View details &raquo;</a></p>
+              <p><%= link_to("Ver Recursos", malla_semestre_curso_path(@co.id, @s, course.id), {:class => 'btn'}) %></p>
           </div><!--/span-->
         <%}%>     
       </div><!--/row-->

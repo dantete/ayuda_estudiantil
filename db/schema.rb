@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130713141405) do
 
   create_table "avatars", :force => true do |t|
@@ -28,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20130713141405) do
     t.text     "text"
     t.integer  "resource_id"
     t.integer  "identity_id"
-=======
-ActiveRecord::Schema.define(:version => 20130706190143) do
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "contains", :force => true do |t|
     t.integer  "semester"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20130706190143) do
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.text     "description"
->>>>>>> ac8174067e5c4e7ab1522e674c985daf715213b8
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
