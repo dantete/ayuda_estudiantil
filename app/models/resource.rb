@@ -4,6 +4,8 @@ class Resource < ActiveRecord::Base
                   :visible, :grade, :professor,:file
 
   belongs_to :identity
+  belongs_to :course
+
   has_many :comments , :dependent => :destroy #comentarios hechos en este recurso
   has_many :identities , through: :comments #identities que han comentado este recurso
 

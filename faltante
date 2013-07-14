@@ -9,7 +9,8 @@ DANTE:
 -Si edito los datos de un user, le borra la imagen y luego actualiza los datos
 
 JAQUE:
--Iconos en las tables
+-Iconos en las tables. Faltan estos 2 'sort_asc_disabled.png' 'sort_desc_disabled.png' 
+(falta la imagen, la ruta esta bien)
 
 
 DEJAR PARA EL FINAL(orden de hacer primero):

@@ -44,7 +44,7 @@ class CourseOutlinesController < ApplicationController
 
     respond_to do |format|
       if @course_outline.save
-        format.html { redirect_to @course_outline, notice: 'Course outline was successfully created.' }
+        format.html { redirect_to @course_outline, notice: 'La malla fue creada correctamente' }
         format.json { render json: @course_outline, status: :created, location: @course_outline }
       else
         format.html { render action: "new" }

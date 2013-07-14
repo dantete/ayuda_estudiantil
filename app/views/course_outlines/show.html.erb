@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
@@ -10,6 +9,8 @@
   <%= @course_outline.start_date %>
 </p>
 
+<!-- <h1> CURSOS QUE CONTIENE LA MALLA</h1>
+	<%= @course_outline.courses.inspect %>	 -->
 
 <%= link_to 'Edit', edit_course_outline_path(@course_outline) %> |
 <%= link_to 'Back', course_outlines_path %>

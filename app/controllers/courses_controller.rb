@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
           @contain.save
         end
 
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to @course, notice: 'Curso creado correctamente' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }

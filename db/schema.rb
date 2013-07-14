@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713141405) do
+ActiveRecord::Schema.define(:version => 20130714043113) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "identity_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130713141405) do
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
+    t.integer  "course_id"
   end
 
   add_index "resources", ["identity_id"], :name => "index_resources_on_identity_id"
