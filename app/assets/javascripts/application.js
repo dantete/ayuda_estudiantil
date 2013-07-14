@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+//para que funcionana las DataTables
+$(document).ready(function() {
+	$('#example').dataTable();
+} );
+

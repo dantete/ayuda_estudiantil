@@ -38,7 +38,7 @@
         <%  cont = 0 %>       
         <% @resource.comments.each do |comment| %>
             <%  cont = cont+1 %>
-            <%= render "comments/comment" , :comment => comment,:cont => cont %>
+            <%= render "comments/comment" , :comment => comment,:cont => cont, :identity => @identity %>
         <% end %>
 
         <!-- AddComment Form -->        
