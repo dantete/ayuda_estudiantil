@@ -1,7 +1,7 @@
 class Resource < ActiveRecord::Base
   
   attr_accessible :title ,:description, :tiene_codigo, :resource_type, 
-                  :visible, :grade, :professor,:file
+                  :visible, :grade, :professor,:file, :course_outline_id, :semester
 
   belongs_to :identity
   belongs_to :course

@@ -1,16 +1,23 @@
 FALTANTE:
 
 DANTE:
--borrar comentarios: todosl os users pueden
+-Quitar foto en el editar
 -perfil (para pinchar en los comentarios el nombre de usuario) de usuario poner foto
 -EL usuario visita puede escribir las rutas por ejemplo: 
 /resources/1
 -Un comentario muy grande se sale de la pagina, hay q buscar algo que lo contenga
--Si edito los datos de un user, le borra la imagen y luego actualiza los datos
+-QUe los admins pueden ver todos los recursos no APROBADOS. y editarlos 
+-Correr el "Ayuda EStudiantil"
+
 
 JAQUE:
 -Iconos en las tables. Faltan estos 2 'sort_asc_disabled.png' 'sort_desc_disabled.png' 
 (falta la imagen, la ruta esta bien)
+-Traducir show, entries, search de la TABLEDATA
+
+SERGIO:
+-Arreglar el editar de curso y malla
+-Arrglar el idioma (destroy,edit,show), Links que no se utilicen courses/:id.
 
 
 DEJAR PARA EL FINAL(orden de hacer primero):

@@ -1,0 +1,31 @@
+PHP - PYTHON -> JSON 
+clase Fco PHP - PYTHON Diccionario 
+ 
+DANIEL Y DANTE: 
+pasar las clases de franciscoo a PHP. OK 
+Crear objetos PHP de las clases creadas. OK 
+Pasar los objetos PHP a JSON. (1 línea) OK
+Mandar los JSON al servicio del felipe(Utilizar servicio y agente python del felipe ).
+Recibir los JSON en cliente y pasarlos a diccionario(1 línea). facil
+
+
+Francisco hizo varias clases en PYTHON 
+
+¿has trabajado en PHP? 
+¿has hecho objetos en PHP? (Programación orientada a objetos)
+
+Felipe dijo que los OBJETOS PHP a JSON SE HACE 1 línea código... ES FACIL
+
+OBJETOS PHP --> JSON = línea de código
+
+envia archivo a el felipe.. no 
+
+USAR las clases que hizo FELIPE -> 2 clases -> 1° AGENTE ->(PHP-JSON) -> 2° SERVICIO.
+
+diccionario ES un TIPO BASICO del PYTHON... 
+
+DICCIONARIO PARECIDO a ARREGLO matrices[]... PERO NO es lo mismo
+
+YO nunca he trabajado en PHP.... trabajemos los 2 e
+
+mandame este archivo...

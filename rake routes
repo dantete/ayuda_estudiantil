@@ -1,25 +1,44 @@
 dantete-HP-425 ayuda_estudiantil_1 # rake routes
-           new_session GET    /sessions/new(.:format)                               sessions#new
-     resource_comments POST   /resources/:resource_id/comments(.:format)            comments#create
-      resource_comment DELETE /resources/:resource_id/comments/:id(.:format)        comments#destroy
-              resource GET    /resources/:id(.:format)                              resources#show
-    identity_resources GET    /identities/:identity_id/resources(.:format)          resources#index
-                       POST   /identities/:identity_id/resources(.:format)          resources#create
- new_identity_resource GET    /identities/:identity_id/resources/new(.:format)      resources#new
-edit_identity_resource GET    /identities/:identity_id/resources/:id/edit(.:format) resources#edit
-     identity_resource PUT    /identities/:identity_id/resources/:id(.:format)      resources#update
-                       DELETE /identities/:identity_id/resources/:id(.:format)      resources#destroy
-            identities GET    /identities(.:format)                                 identities#index
-                       POST   /identities(.:format)                                 identities#create
-          new_identity GET    /identities/new(.:format)                             identities#new
-         edit_identity GET    /identities/:id/edit(.:format)                        identities#edit
-              identity GET    /identities/:id(.:format)                             identities#show
-                       PUT    /identities/:id(.:format)                             identities#update
-                       DELETE /identities/:id(.:format)                             identities#destroy
-                  root        /                                                     home#index
-                              /auth/:provider/callback(.:format)                    sessions#create
-               signout        /signout(.:format)                                    sessions#destroy
-          auth_failure        /auth/failure(.:format)                               sessions#failure
+  new_session GET    /sessions/new(.:format)                                                      sessions#new
+     resource_comments POST   /resources/:resource_id/comments(.:format)                                   comments#create
+      resource_comment DELETE /resources/:resource_id/comments/:id(.:format)                               comments#destroy
+              resource GET    /resources/:id(.:format)                                                     resources#show
+    identity_resources GET    /identities/:identity_id/resources(.:format)                                 resources#index
+edit_identity_resource GET    /identities/:identity_id/resources/:id/edit(.:format)                        resources#edit
+     identity_resource PUT    /identities/:identity_id/resources/:id(.:format)                             resources#update
+                       DELETE /identities/:identity_id/resources/:id(.:format)                             resources#destroy
+            identities GET    /identities(.:format)                                                        identities#index
+                       POST   /identities(.:format)                                                        identities#create
+          new_identity GET    /identities/new(.:format)                                                    identities#new
+         edit_identity GET    /identities/:id/edit(.:format)                                               identities#edit
+              identity GET    /identities/:id(.:format)                                                    identities#show
+                       PUT    /identities/:id(.:format)                                                    identities#update
+                       DELETE /identities/:id(.:format)                                                    identities#destroy
+        malla_semestre        /plan/malla/:course_outline_id/semestre/:semester(.:format)                  plan#malla
+                 malla        /plan/malla/:course_outline_id(.:format)                                     plan#malla
+  malla_semestre_curso        /plan/malla/:course_outline_id/semestre/:semester/curso/:course_id(.:format) plan#curso
+      course_resources POST   /courses/:course_id/resources(.:format)                                      resources#create
+   new_course_resource GET    /courses/:course_id/resources/new(.:format)                                  resources#new
+               courses GET    /courses(.:format)                                                           courses#index
+                       POST   /courses(.:format)                                                           courses#create
+            new_course GET    /courses/new(.:format)                                                       courses#new
+           edit_course GET    /courses/:id/edit(.:format)                                                  courses#edit
+                course GET    /courses/:id(.:format)                                                       courses#show
+                       PUT    /courses/:id(.:format)                                                       courses#update
+                       DELETE /courses/:id(.:format)                                                       courses#destroy
+       course_outlines GET    /course_outlines(.:format)                                                   course_outlines#index
+                       POST   /course_outlines(.:format)                                                   course_outlines#create
+    new_course_outline GET    /course_outlines/new(.:format)                                               course_outlines#new
+   edit_course_outline GET    /course_outlines/:id/edit(.:format)                                          course_outlines#edit
+        course_outline GET    /course_outlines/:id(.:format)                                               course_outlines#show
+                       PUT    /course_outlines/:id(.:format)                                               course_outlines#update
+                       DELETE /course_outlines/:id(.:format)                                               course_outlines#destroy
+                  root        /                                                                            home#index
+                              /auth/:provider/callback(.:format)                                           sessions#create
+               signout        /signout(.:format)                                                           sessions#destroy
+          auth_failure        /auth/failure(.:format)                                                      sessions#failure
+
+
 
 
 ____________________________________________________________________________

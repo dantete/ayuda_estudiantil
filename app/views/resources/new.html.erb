@@ -1,6 +1,6 @@
 <h1>Crear recurso</h1>
 
-<%= form_for ([@identity, @resource]), :html => {:multipart => true} do |r_form| %>
+<%= form_for ([@course, @resource]), :html => {:multipart => true} do |r_form| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@resource.errors.count, "error") %> El recurso no fue creado:</h2>
@@ -13,10 +13,18 @@
     </div>
   <% end %>
   
-  <%= render 'form' , :r_form => r_form%>
+  <%= render 'form' , :r_form => r_form %>
+
+  <div class="field">
+    <%= r_form.label "Subir archivo" %>
+    <%= r_form.file_field :file %>    
+  </div>
 
   <br>
   <div class="actions">
+    
+    <%= r_form.hidden_field :course_outline_id, :value => params[:course_outline_id] %>
+    <%= r_form.hidden_field :semester, :value => params[:semester] %>
     <%= r_form.submit "Crear" %>
   </div>
 <% end %>
