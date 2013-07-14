@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
@@ -26,7 +27,7 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     @mallas = CourseOutline.all
-    @semesters = [1,2,3,4,5,6,7,8,9,10,11,12]
+    @semesters = ["Primer", 1], ["Segundo", 2], ["Tercer", 3], ["Cuarto", 4], ["Quinto", 5], ["Sexto", 6], ["Séptimo", 7], ["Octavo", 8], ["Noveno", 9], ["Décimo", 10], ["Décimo Primer", 11], ["Décimo Segundo", 12]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,7 +39,8 @@ class CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
     @mallas = CourseOutline.all
-    @semesters = [1,2,3,4,5,6,7,8,9,10,11,12]
+    @contains = Contain.where(:course_id => @course.id)
+    @semesters = ["Primer", 1], ["Segundo", 2], ["Tercer", 3], ["Cuarto", 4], ["Quinto", 5], ["Sexto", 6], ["Séptimo", 7], ["Octavo", 8], ["Noveno", 9], ["Décimo", 10], ["Décimo Primer", 11], ["Décimo Segundo", 12]
     malla_ids = params[:malla_ids] if params[:malla_ids]
   end
 
@@ -52,8 +54,8 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        for c in malla_ids
-          @contain = Contain.new(:course_id => @course.id, :course_outline_id => c, :semester => sem)
+        for i in 0..malla_ids.length-1
+          @contain = Contain.new(:course_id => @course.id, :course_outline_id => malla_ids[i], :semester => sem[i])
           @contain.save
         end
 
@@ -70,9 +72,19 @@ class CoursesController < ApplicationController
   # PUT /courses/1.json
   def update
     @course = Course.find(params[:id])
+    malla_ids = params[:malla_ids] if params[:malla_ids]
+    malla_ids ||= []
+    sem = params[:s]
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
+        con = Contain.where(:course_id => @course.id)
+        con.delete_all
+        for i in 0..malla_ids.length-1
+          @contain = Contain.new(:course_id => @course.id, :course_outline_id => malla_ids[i], :semester => sem[i])
+          @contain.save
+        end
+
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else

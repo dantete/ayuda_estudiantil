@@ -35,27 +35,26 @@
         </thead>
         <tbody>
           <% @c.resources.each do |resource| %>
-         <tr>
-          <td><%= resource.title %></td>
-          <td><%= resource.resource_type %></td>
-          <td align ="center"><%= resource.comments.count %></td>
-          <td><%= resource.professor %></td>
-          <td><%= resource.grade %></td>
+           <tr>
+            <td><%= resource.title %></td>
+            <td><%= resource.resource_type %></td>
+            <td align ="center"><%= resource.comments.count %></td>
+            <td><%= resource.professor %></td>
+            <td><%= resource.grade %></td>
 
-          <td align ="center"><% if resource.tiene_codigo   %>
-            <i class="icon-ok-sign "></i> 
-          <% else %>
-            <i class="icon-remove-sign "></i> 
-          <% end %></td>
+            <td align ="center"><% if resource.tiene_codigo   %>
+              <i class="icon-ok-sign "></i> 
+            <% else %>
+              <i class="icon-remove-sign "></i> 
+            <% end %></td>
 
-          
-          
-          <td><a class="btn" href="<%= resource_path(resource)%>" >
-              <i class="icon-folder-open-alt icon-2x"></i></a></td>
-              
-          <%#= link_to("Ver Recursos", malla_semestre_curso_path(@co.id, @s, course.id), {:class => 'btn'}) %></p>  
+            
+            
+            <td><a class="btn" href="<%= resource_path(resource)%>" >
+                <i class="icon-folder-open-alt icon-2x"></i></a></td>
+                <%= link_to("Ver Recursos", malla_semestre_curso_path(@co.id, @s, course.id), {:class => 'btn'}) %> 
 
-        </tr>
+          </tr>
         <% end %>
       </tbody>
     </table>

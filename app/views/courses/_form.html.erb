@@ -21,17 +21,20 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    <% @mallas.each do |malla| %>
-      <%= check_box_tag 'malla_ids[]', malla.id, false -%>
-      <%= h malla.name -%>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <label>Semestre</label>
-    <%= select_tag(:s, options_for_select(@semesters))%>
-  </div>
+  <% @mallas.each do |malla| %>
+    <div class="row-fluid">
+      <%= check_box_tag 'malla_ids[]', malla.id, @course.course_outlines.exists?(malla) -%>
+      <%= h malla.name -%>
+      <% if @course.course_outlines.exists?(malla) %>
+        <% con = @contains.where(:course_outline_id => malla.id).first%>
+        <%= select_tag('s[]', options_for_select(@semesters, :selected => con.semester), {:class => 'selectpicker span2'}) %> Semestre
+      <% else %>
+        <%= select_tag('s[]', options_for_select(@semesters), {:class => 'selectpicker span2'}) %> Semestre
+      <% end %>
+    </div>
+  <% end %>
+
 
   <div class="actions">
     <%= f.submit %>
