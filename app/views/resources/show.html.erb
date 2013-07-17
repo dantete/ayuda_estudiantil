@@ -15,7 +15,11 @@
 			</div>
 			<div class="span6">
 				<h2>Contiene código</h2>
-				<%= @resource.tiene_codigo %>
+				<% if @resource.tiene_codigo   %>
+          <i class="icon-ok-sign icon-2x"></i> 
+        <% else %>
+          <i class="icon-remove-sign icon-2x"></i> 
+        <% end %>
 			</div>
 		</div>
 

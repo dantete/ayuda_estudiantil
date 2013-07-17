@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 	before_filter :require_user
 	helper_method :current_user
+	
 
 	private
 
@@ -13,4 +14,6 @@ class ApplicationController < ActionController::Base
 	def require_user
 
 	end
+
+	
 end

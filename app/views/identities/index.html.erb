@@ -11,9 +11,9 @@
               <th>Nombre</th>
               <th>Email</th>
               <th>Administrador</th>
-              <th></th>
-              <th></th>
-              <th></th> 
+              <th>Recursos del usuario</th>
+              <th>Editar</th>
+              <th>Eliminar</th> 
             </tr>           
           </thead>
           <tbody>
@@ -22,10 +22,28 @@
                   <td><%= identity.id %></td>
                   <td><%= identity.name %></td>
                   <td><%= identity.email %></td>
-                  <td><%= identity.administrator %></td>
-                  <td><%= link_to 'Editar usuario', edit_identity_path(identity) %></td>
-                  <td><%= link_to 'Eliminar usuario', identity, :confirm => '¿Estas seguro?', :method => :delete %></td>
-                  <td><%= link_to 'Recursos', identity_resources_path(identity) %></td>
+                  
+                  <td align ="center">
+                    <% if identity.administrator   %>
+                        <i class="icon-ok-sign icon-2x"><%= " "%></i> 
+                    <% else %>
+                        <i class="icon-remove-sign icon-2x"></i> 
+                    <% end %>
+                  </td>
+                  <!-- <td><%= link_to 'Recursos', identity_resources_path(identity) %></td> -->
+                  <td align ="center">
+                    <a class="btn btn-primary" href="<%= identity_resources_path(identity) %>" >
+                    <i class="icon-paper-clip icon-2x"></i></a>
+                  </td>
+
+                  <!-- <td><%= link_to 'Editar usuario', edit_identity_path(identity) %></td> -->
+                  <td align ="center">
+                  <a class="btn btn-warning" href="<%= edit_identity_path(identity)%>" >
+                  <i class="icon-edit icon-2x"></i></a>
+                </td>
+
+                  <td><%= link_to 'Eliminar', identity, :confirm => '¿Estas seguro?', :method => :delete %></td>
+                  
                 </tr>
               <% end %>
           </tbody>

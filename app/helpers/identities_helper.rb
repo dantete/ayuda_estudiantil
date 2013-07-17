@@ -8,7 +8,7 @@ module IdentitiesHelper
 			identity_logged =  Identity.find(idUser) 		 
 			return identity_logged.administrator
 		end	
-  	end
+  end
 
 end
 

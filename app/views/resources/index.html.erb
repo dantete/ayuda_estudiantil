@@ -31,13 +31,35 @@
                 <td><%= resource.description %></td>
                 <td><%= resource.professor %></td>
                 <td><%= resource.grade %></td>
-                <td><%= resource.tiene_codigo %></td>
+                <td align ="center">
+                  <% if resource.tiene_codigo   %>
+                    <i class="icon-ok-sign icon-2x"><%= " "%></i> 
+                  <% else %>
+                    <i class="icon-remove-sign icon-2x"></i> 
+                  <% end %>
+                </td>
                 <td><%= resource.file_file_name %></td>
-                <td><%= resource.visible %></td>
-                <td><%= link_to "Download", resource.file.url(:original,false) %></td>
-                <td><%= link_to 'Editar', edit_identity_resource_path(@identity, resource) %></td>
+                <td align ="center">
+                  <% if resource.visible   %>
+                    <i class="icon-ok-sign icon-2x"><%= " "%></i> 
+                  <% else %>
+                    <i class="icon-remove-sign icon-2x"></i> 
+                  <% end %>
+                </td>
+                <!-- <td><%= link_to "Download", resource.file.url(:original,false) %></td> -->
+                <td>
+                  <a class="btn btn-primary" href="<%= resource.file.url(:original,false)%>" >
+                  <i class="icon-cloud-download icon-2x"></i></a>
+                </td>
+
+                <!-- <td><%= link_to 'Editar', edit_identity_resource_path(@identity, resource) %></td> -->
+                <td>
+                  <a class="btn btn-warning" href="<%= edit_identity_resource_path(@identity, resource)%>" >
+                  <i class="icon-edit icon-2x"></i></a>
+                </td>
                 <% if administrator %>
                    <td><%= link_to 'Eliminar', [@identity, resource], confirm: '¿Estas seguro?', method: :delete %></td>
+                  
                 <% end %> 
             </tr>
             <% end %>
