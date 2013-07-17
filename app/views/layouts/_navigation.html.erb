@@ -18,13 +18,19 @@
           
           <% identity =  Identity.find(idUser) %>    
           <% if  identity.administrator %>
-          <li>
-            <%= link_to('Usuarios',identities_path) %>
-          </li>    
+            <li>
+              <%= link_to('Usuarios',identities_path) %>
+            </li> 
+            <li>
+              <%= link_to('Cursos',courses_path) %>
+            </li>
+            <li>
+              <%= link_to('Mallas',course_outlines_path) %>
+            </li>      
           <% else %>
-          <li>
-            <%= link_to('Editar Cuenta', edit_identity_path(identity)) %>
-          </li>            
+            <li>
+              <%= link_to('Editar Cuenta', edit_identity_path(identity)) %>
+            </li>            
           <% end %>
            <%#opciones para usuarios normales y administradores  %>
            <li class="dropdown">
@@ -32,7 +38,9 @@
               <a href="" class="dropdown-toggle" data-toggle="dropdown">Recursos<b class="caret"></b></a>
              
              <ul class="dropdown-menu">
-                <li><%= link_to 'Aprobar recursos', resources_all_path(identity)    %></li>
+                <% if  identity.administrator %>
+                  <li><%= link_to 'Aprobar recursos', resources_all_path(identity)    %></li>
+                <% end %>                
                
                 <li><%= link_to 'Mis recursos', identity_resources_path(identity)   %></li>
                 

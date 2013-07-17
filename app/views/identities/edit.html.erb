@@ -2,7 +2,10 @@
 
 <%#= @identity.avatar.inspect %>
 <% if @identity.avatar  == nil %>
-	<% @identity.build_avatar %>     
+	<% tiene_foto = false %>  
+	<% @identity.build_avatar %>  
+<% else %>   
+	<% tiene_foto = true %> 
 <% end %>
 
 <%= form_for(@identity )   do |identity_form| %>
@@ -26,18 +29,24 @@
 	<%= identity_form.text_field :email %>
 </div>
 
-<h2>Avatar</h2>
-<%= render :partial => 'avatars/form',
-:locals => {:form => identity_form} %>
-
-
-
 <% if loggedIsAdministrator() %>
 <div class="field">
 	<%= identity_form.label :administrator %>
 	<%= identity_form.check_box :administrator %>
 </div>
 <% end %>
+
+<hr>
+<% if tiene_foto %>
+	<h2>Avatar: tiene imagen</h2>
+	<%= image_tag @identity.avatar.photo.url %>
+<% else %>
+	<h2>Avatar: no tiene imagen</h2>
+		<i class="icon-user icon-5x"></i>	  
+<% end %>
+
+<%= render :partial => 'avatars/form',
+:locals => {:form => identity_form} %>
 
 <br>
 <div class="actions">

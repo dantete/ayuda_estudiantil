@@ -1,5 +1,8 @@
 
 <h1>Lista Mallas Curriculares</h1>
+</br>
+<p><%=  link_to("Crear malla",  new_course_outline_path , {:class => 'btn btn-primary btn-large'}) %></p>
+</br>
 
 <body>
   <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
@@ -7,25 +10,34 @@
       <tr>
         <th>Nombre</th>
         <th>Fecha creación</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
       </tr>           
     </thead>
     <tbody>
      <% @course_outlines.each do |course_outline| %>
      <tr>
       <td><%= course_outline.name %></td>
-      <td><%= course_outline.start_date %></td>
-      <td><%= link_to 'Show', course_outline %></td>
-      <td><%= link_to 'Edit', edit_course_outline_path(course_outline) %></td>
-      <td><%= link_to 'Destroy', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td align ="center"><%= course_outline.start_date %></td>
+      <!-- <td><%= link_to 'Show', course_outline %></td> -->
+      <td align ="center">
+        <a class="btn btn-primary" href="<%= course_outline_path(course_outline)%>" >
+        <i class="icon-folder-open-alt icon-2x"></i></a>
+      </td>
+
+      <!-- <td><%= link_to 'Edit', edit_course_outline_path(course_outline) %></td> -->
+      <td align ="center">
+        <a class="btn btn-warning" href="<%= edit_course_outline_path(course_outline)%>" >
+        <i class="icon-edit icon-2x"></i></a>
+      </td>
+
+      <td align ="center"><%= link_to 'Eliminar', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<br />
-<%= link_to 'New Course outline', new_course_outline_path %>
+
 </body>
 
 

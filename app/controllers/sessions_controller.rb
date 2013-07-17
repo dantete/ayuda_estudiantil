@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
 		session[:user_id] = user.id		
 
 		#GUARDO LA CANTIDAD DE RECURSOS INVISIBLES
-		identity = Identity.find(user.id)
-		if identity.administrator 
-			resources_amount = Resource.where(:visible => false)
-			set_invisible_resources(resources_amount) 
-		end		
+		# identity = Identity.find(user.id)
+		# if identity.administrator 
+		# 	resources_amount = Resource.where(:visible => false)
+		# 	set_invisible_resources(resources_amount) 
+		# end		
 			
 
 		#@identity = Identity.find(user.id)
