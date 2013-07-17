@@ -19,6 +19,7 @@
      <% @course_outlines.each do |course_outline| %>
      <tr>
       <td><%= course_outline.name %></td>
+
       <td align ="center"><%= course_outline.start_date %></td>
       <!-- <td><%= link_to 'Show', course_outline %></td> -->
       <td align ="center">
@@ -33,6 +34,7 @@
       </td>
 
       <td align ="center"><%= link_to 'Eliminar', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
     </tr>
     <% end %>
   </tbody>
