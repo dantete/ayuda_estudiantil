@@ -17,15 +17,15 @@
      <tr>
       <td><%= course_outline.name %></td>
       <td><%= course_outline.start_date %></td>
-      <td><%= link_to 'Show', course_outline %></td>
-      <td><%= link_to 'Edit', edit_course_outline_path(course_outline) %></td>
-      <td><%= link_to 'Destroy', course_outline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Ver', course_outline %></td>
+      <td><%= link_to 'Editar', edit_course_outline_path(course_outline) %></td>
+      <td><%= link_to 'Eliminar', course_outline, method: :delete, data: { confirm: 'Estas seguro de eliminar?' } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 <br />
-<%= link_to 'New Course outline', new_course_outline_path %>
+<%= link_to 'Nueva Malla', new_course_outline_path, {:class => ' btn btn-primary'} %>
 </body>
 
 

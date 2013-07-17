@@ -1,11 +1,11 @@
 
 <p>
-  <b>Name:</b>
+  <b>Nombre:</b>
   <%= @course.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Descripcion:</b>
   <%= @course.description %>
 </p>
 	
@@ -13,3 +13,6 @@
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
+
+<%= link_to 'Editar', edit_course_outline_path(@course), {:class => ' btn btn-primary'} %> 
+<%= link_to 'Volver', courses_path, {:class => ' btn btn-success'} %>

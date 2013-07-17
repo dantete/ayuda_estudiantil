@@ -952,21 +952,21 @@
 			 *   by javascript
 			 */
 			this.oLanguage = {
-				"sProcessing": "Processing...",
-				"sLengthMenu": "Show _MENU_ entries",
-				"sZeroRecords": "No matching records found",
-				"sEmptyTable": "No data available in table",
-				"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-				"sInfoEmpty": "Showing 0 to 0 of 0 entries",
-				"sInfoFiltered": "(filtered from _MAX_ total entries)",
+				"sProcessing": "Procesando...",
+				"sLengthMenu": "Ver _MENU_ registros",
+				"sZeroRecords": "No hay registros encontrados",
+				"sEmptyTable": "No hay datos disponibles en la tabla",
+				"sInfo": "Viendo _START_ a _END_ de _TOTAL_ registros",
+				"sInfoEmpty": "Viendo 0 a 0 de 0 registros",
+				"sInfoFiltered": "(Filtrando un total de _MAX_ registros)",
 				"sInfoPostFix": "",
-				"sSearch": "Search:",
+				"sSearch": "Buscar:",
 				"sUrl": "",
 				"oPaginate": {
-					"sFirst":    "First",
-					"sPrevious": "Previous",
-					"sNext":     "Next",
-					"sLast":     "Last"
+					"sFirst":    "Primera",
+					"sPrevious": "Anterior",
+					"sNext":     "Siguiente",
+					"sLast":     "Ultima"
 				}
 			};
 			
@@ -1470,7 +1470,7 @@
 		 * Purpose:  Sort the table by a particular row
 		 * Returns:  -
 		 * Inputs:   int:iCol - the data index to sort on. Note that this will
-		 *   not match the 'display index' if you have hidden data entries
+		 *   not match the 'display index' if you have hidden data registros
 		 */
 		this.fnSort = function( aaSort )
 		{

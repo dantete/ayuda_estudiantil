@@ -1,16 +1,21 @@
 
 <p>
-  <b>Name:</b>
+  <b>Nombre:</b>
   <%= @course_outline.name %>
 </p>
 
 <p>
-  <b>Start date:</b>
+  <b>Fecha Inicio:</b>
   <%= @course_outline.start_date %>
 </p>
 
-<!-- <h1> CURSOS QUE CONTIENE LA MALLA</h1>
-	<%= @course_outline.courses.inspect %>	 -->
+<p>
+  <b>Cursos Asociados:</b></br>
+  <%for c in @course_outline.courses %>
+  	<%= c.name %></br>
+  <%end%>
+</p>
+		
 
-<%= link_to 'Edit', edit_course_outline_path(@course_outline) %> |
-<%= link_to 'Back', course_outlines_path %>
+<%= link_to 'Editar', edit_course_outline_path(@course_outline), {:class => ' btn btn-primary'} %> 
+<%= link_to 'Volver', course_outlines_path, {:class => ' btn btn-success'} %>
